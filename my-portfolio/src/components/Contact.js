@@ -30,37 +30,67 @@ const Contact = () => {
     let valid = true;
     let errors = {};
 
-    // Validate name
-    if (!form.name.trim()) {
-      valid = false;
-      errors.name = 'Name is required';
-    }
-
-    // Validate email
-    if (!form.email.trim()) {
-      valid = false;
-      errors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      valid = false;
-      errors.email = 'Email is not valid';
-    }
-
-    // Validate message
-    if (!form.message.trim()) {
-      valid = false;
-      errors.message = 'Message is required';
-    }
+    // ... (Validation logic)
 
     setErrors(errors);
     return valid;
   };
 
+  const styles = {
+    section: {
+      fontFamily: 'Helvetica, Arial, sans-serif',
+      backgroundColor: '#759fbcff',
+      padding: '20px',
+      color: '#463730ff',
+    },
+    h2: {
+      textAlign: 'center',
+      borderBottom: `2px solid #463730ff`,
+      paddingBottom: '10px',
+      marginBottom: '20px',
+    },
+    formGroup: {
+      marginBottom: '20px',
+    },
+    label: {
+      display: 'block',
+      marginBottom: '5px',
+    },
+    input: {
+      width: '100%',
+      padding: '10px',
+      borderRadius: '5px',
+      border: `1px solid #1f5673ff`,
+    },
+    textarea: {
+      width: '100%',
+      height: '100px',
+      padding: '10px',
+      borderRadius: '5px',
+      border: `1px solid #1f5673ff`,
+    },
+    button: {
+      backgroundColor: '#90c3c8ff',
+      color: '#463730ff',
+      padding: '10px 20px',
+      border: 'none',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+      transition: 'background-color 0.3s',
+    },
+    error: {
+      color: '#b9b8d3ff',
+      fontSize: '12px',
+    },
+  };
+
   return (
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
+    <section id="contact" style={styles.section}>
+      <h2 style={styles.h2}>Contact Me</h2>
+      <form action="https://formsubmit.co/eri0305@hotmail.com" method="POST">
+        <div className="form-group" style={styles.formGroup}>
+          <label htmlFor="name" style={styles.label}>Name</label>
           <input
             type="text"
             name="name"
@@ -68,11 +98,12 @@ const Contact = () => {
             value={form.name}
             onChange={handleChange}
             onBlur={validateForm}
+            style={styles.input}
           />
-          {errors.name && <div className="error">{errors.name}</div>}
+          {errors.name && <div className="error" style={styles.error}>{errors.name}</div>}
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <div className="form-group" style={styles.formGroup}>
+          <label htmlFor="email" style={styles.label}>Email</label>
           <input
             type="email"
             name="email"
@@ -80,21 +111,23 @@ const Contact = () => {
             value={form.email}
             onChange={handleChange}
             onBlur={validateForm}
+            style={styles.input}
           />
-          {errors.email && <div className="error">{errors.email}</div>}
+          {errors.email && <div className="error" style={styles.error}>{errors.email}</div>}
         </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
+        <div className="form-group" style={styles.formGroup}>
+          <label htmlFor="message" style={styles.label}>Message</label>
           <textarea
             name="message"
             id="message"
             value={form.message}
             onChange={handleChange}
             onBlur={validateForm}
+            style={styles.textarea}
           />
-          {errors.message && <div className="error">{errors.message}</div>}
+          {errors.message && <div className="error" style={styles.error}>{errors.message}</div>}
         </div>
-        <button type="submit">Send</button>
+        <button type="submit" style={styles.button}>Send</button>
       </form>
     </section>
   );

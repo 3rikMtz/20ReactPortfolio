@@ -18,7 +18,7 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/resume" component={Resume} />
         {/* Add a redirect to "/about" as a default */}
-        <Route path="/" component={AboutMe} />
+        <Route path="/" component={Portfolio} />
       </Switch>
       <Footer />
     </Router>
